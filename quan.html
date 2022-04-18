@@ -1,0 +1,52 @@
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Testing</title>
+    <style>
+        .false:after { 
+            content: "\2716";
+            background-color: rgb(250, 217, 230);
+        }
+        .true:after {
+             content: "\2714"; 
+            background-color: rgb(182, 255, 206);
+        }
+    </style>
+</head>
+<body>
+    <div id="register_account" oninput="continuousValidate()">
+        <form action="">
+        <p>
+        <label for="email">Email : </label>
+        <input id="email" type="email" name="email">
+        </p>
+        <p>Password : 
+            <label for="password"></label>
+            <input id="password" type="password" name="password">
+        </p>
+        <p>Retype Password : 
+            <label for="retype_password"></label>
+            <input id="retype_password" type="text" name="retype_password">
+        </p>
+        <p> Profile Picture : 
+            <label for="profile_picture"></label>
+            <input id="profile_picture" type="file" name="profile_picture" accept=".jpg,.jpeg,.png,.gif">
+        </p>
+        <p>First Name : 
+            <label for="f_name"></label>
+            <input id="f_name" type="text" name="f_name">
+        </p>
+        <p>Last Name : 
+            <label for="l_name"></label>
+            <input id="l_name" type="text" name="l_name">
+        </p>
+        <button type="reset" onclick="resetValidate()">Clear</button>
+        <button type="submit" onclick="validateName()">Register</button>
+    </form>
+
+    </div>
+</body>
+<script src="index.js"></script>
+</html>
