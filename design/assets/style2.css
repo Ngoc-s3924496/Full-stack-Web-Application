@@ -21,7 +21,8 @@ Flexbox and floats are used as a fallback so that browsers which don't support g
 }
 
 body {
-    font-family: "Open Sans", Arial, sans-serif;
+    font-family: "Roboto", Arial, sans-serif;
+    font-weight: 400;
     min-height: 100vh;
     background-color: #fafafa;
     color: #262626;
@@ -131,13 +132,14 @@ img {
     display: block;
 }
 
+/* Start profile css */
 .container {
     max-width: 93.5rem;
     margin: 0 auto;
     padding: 0 2rem;
 }
 
-.btn {
+.profile-btn {
     display: inline-block;
     font: inherit;
     background: none;
@@ -145,10 +147,6 @@ img {
     color: inherit;
     padding: 0;
     cursor: pointer;
-}
-
-.btn:focus {
-    outline: 0.5rem auto #4d90fe;
 }
 
 .visually-hidden {
@@ -208,11 +206,23 @@ img {
     border-radius: 0.3rem;
     padding: 0 2.4rem;
     margin-left: 2rem;
+    transition: all 0.1s linear 0s;
+}
+.profile-edit-btn:hover {
+    border: 0.2rem solid #dbdbdb;
+    transition: all 0.s linear 0s;
 }
 
 .profile-settings-btn {
     font-size: 2rem;
     margin-left: 1rem;
+    transition: all 0.1s linear 0s;
+
+}
+
+.profile-settings-btn:hover {
+    font-size: 2.2rem;
+    transition: all 0.1s linear 0s;
 }
 
 .profile-stats {
@@ -475,6 +485,10 @@ Remove or comment-out the code block below to see how the browser will fall-back
         }
     }
 }
+
+/* End profile css */
+
+
 @media only screen and (max-width: 700px) {
   /* Navigation */
   .navigation {
@@ -497,3 +511,4 @@ Remove or comment-out the code block below to see how the browser will fall-back
     flex-basis: 100%;
   }
 }
+
