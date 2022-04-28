@@ -127,3 +127,7 @@ function resetValidate() {
     document.getElementById("f_name").removeAttribute("style");
     document.getElementById("l_name").removeAttribute("style");
 }
+function showContent() {
+    var popup = document.getElementById("myPopup");
+    popup.classList.toggle("show");
+  }
