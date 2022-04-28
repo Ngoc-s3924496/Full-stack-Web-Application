@@ -1,3 +1,12 @@
+function openRegister() {
+    let card = document.getElementById("card");
+    card.style.transform = "rotateY(-180deg)";
+}
+
+function openLogin() {
+    let card = document.getElementById("card");
+    card.style.transform = "rotateY(0deg)";
+}
 // Mấy cái này là function theo thứ tự của thầy nha
 // Những gì tao làm nè :
 // 1 : Check email in proper format
@@ -23,23 +32,31 @@
 function validateEmail() {
     let email = document.querySelector("#email").value;
     const validRegex = /^[a-zA-Z0-9.!#$%&'*+/=?^_`{|}~-]+@[a-zA-Z0-9-]+(?:\.[a-zA-Z0-9-]+)*$/;
-    const emailClasses = document.querySelectorAll("p")[0].classList;
+    const emailedit = document.querySelector("#email");
+    // document.querySelector("#email").removeAttribute("class");
+    // document.querySelector("#email").setAttribute("class", ".false:after");
+
     let emailValid = email.match(validRegex);
     if (emailValid) {
-        emailClasses.remove("false");
-        emailClasses.add("true");
+        emailedit.style.border = "1.25px solid rgb(6, 255, 0)";
+        // emailClasses.remove("false");
+        // emailClasses.add("true");
         return emailValid;
     } else {
-        emailClasses.remove("true");
-        emailClasses.add("false");
+        // document.querySelector("#email").removeAttribute("class");
+        // document.querySelector("#email").setAttribute("class", ".false:after");
+        // emailClasses.remove("true");
+        // emailClasses.add("false");
+        emailedit.style.border = "1.25px solid rgb(255, 23, 0)";
         return emailValid;
     }
 }
 
 function validatePassword() {
     let pass = document.querySelector("#password").value;
-    const passwordClasses = document.querySelectorAll("p")[1].classList;
-    let final = false;
+    let pass2 = document.querySelector('#retype_password').value;
+    const passwordedit = document.querySelector("#password");
+    const retype_passwordedit = document.querySelector("#retype_password");
     // Length check
     let lengthCheck = (pass.length >= 8 && pass.length <= 20);
     //lower case check
@@ -78,65 +95,63 @@ function validatePassword() {
             foundDigit = false;
         }
     }
-    // Check same passwords
-    let samepass = false;
-    let pass1 = document.querySelector('#password').value;
-    let pass2 = document.querySelector('#retype_password').value;
-    if (pass1 === pass2) {
-        samepass = true;
-    } else {
-        samepass = false;
-    }
     const passValidate = lengthCheck && foundLower && foundUpper && foundDigit;
     // Final check
-    if  (passValidate){
-        passwordClasses.remove("false");
-        passwordClasses.add("true");
+    if (passValidate) {
+        passwordedit.style.border = "1.25px solid rgb(6, 255, 0)";
     } else {
-        passwordClasses.remove("true");
-        passwordClasses.add("false");
+        passwordedit.style.border = "1.25px solid rgb(255, 23, 0)";
     }
-    if (passValidate     && samepass) {
-        final = true;
-        passwordClasses.remove("false");
-        passwordClasses.add("true");
-        return final;
+    if (pass2 == pass) {
+        retype_passwordedit.style.border = "1.25px solid rgb(6, 255, 0)";
     } else {
-        passwordClasses.remove("true");
-        passwordClasses.add("false");
-        return final;
+        retype_passwordedit.style.border = "1.25px solid rgb(255, 23, 0)";
     }
 }
 
-function validateName() {
+function validateFirstName() {
     let fname = document.querySelector("#f_name").value;
-    let lname = document.querySelector("#l_name").value;
-    const firstNameClasses = document.querySelectorAll("p")[4].classList;
-    const lastNameClasses = document.querySelectorAll("p")[5].classList;
-    const nameValid = (fname.length > 2 && fname.length < 20) && (lname.length > 2 && lname.length < 20);
-    if (nameValid) {
-        firstNameClasses.remove("false");
-        firstNameClasses.add("true");
-        lastNameClasses.remove("false");
-        lastNameClasses.add("true");
+    const firstNameedit = document.querySelector("#f_name");
+    const firstnameValid = (fname.length > 2 && fname.length < 20);
+    if (firstnameValid) {
+        firstNameedit.style.border = "1.25px solid rgb(6, 255, 0)";
+
     } else {
-        firstNameClasses.remove("true");
-        firstNameClasses.add("false");
-        lastNameClasses.remove("true");
-        lastNameClasses.add("false");
+        firstNameedit.style.border = "1.25px solid rgb(255, 23, 0)";
     }
-    return nameValid;
 }
 
-function continuousValidate() {
+function validateLastName() {
+    let lname = document.querySelector("#l_name").value;
+    const lastNameedit = document.querySelector("#l_name");
+    const lastnameValid = (lname.length > 2 && lname.length < 20);
+    if (lastnameValid) {
+        lastNameedit.style.border = "1.25px solid rgb(6, 255, 0)";
+    } else {
+        lastNameedit.style.border = "1.25px solid rgb(255, 23, 0)";
+    }
+}
+
+function continuousValidateEmail() {
     validateEmail();
-    validateName();
+}
+
+function continuousValidatePassword() {
     validatePassword();
 }
 
+function continuousValidateFirstName() {
+    validateFirstName();
+}
+
+function continuousValidateLastName() {
+    validateLastName();
+}
+
 function resetValidate() {
-    for (let i = 0; i < 6; i++) {
-        document.querySelectorAll("p")[i].classList.remove("true");
-        document.querySelectorAll("p")[i].classList.remove("false");
-    }
+    document.getElementById("email").removeAttribute("style");
+    document.getElementById("password").removeAttribute("style");
+    document.getElementById("retype_password").removeAttribute("style");
+    document.getElementById("f_name").removeAttribute("style");
+    document.getElementById("l_name").removeAttribute("style");
 }
