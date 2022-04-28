@@ -1,0 +1,58 @@
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Log In</title>
+    <link rel="stylesheet" href="css\login-page.css" />
+</head>
+
+<body>
+    <div class="container">
+        <div class="card">
+            <div class="inner-box" id="card">
+                <div class="card-front">
+                    <h2>LOGIN</h2>
+                    <form action="#" method="#" enctype="multipart/form-data">
+                        <input type="text" name="username" class="input-box" placeholder="Your Email" required />
+
+                        <input type="password" name="password" class="input-box" placeholder="Your Password" required />
+                        <button type="submit" class="submit-btn">Log In</button>
+                    </form>
+                    
+                    <button type="button" class="btn" onclick="openRegister()">
+                        Don't have an account? Register here
+                    </button>
+                </div>
+                <div class="card-back">
+                    <h2>REGISTER</h2>
+                    <form action="#" method="#" enctype="multipart/form-data">
+                        <input class="input-box" id="email" type="email" name="email" placeholder="Your Email"
+                            required oninput="continuousValidateEmail()" />
+                        <input class="input-box" id="password" type="text" name="password"
+                            placeholder="Your Password" required oninput="continuousValidatePassword()"/>
+                        
+                        <input class="input-box" id="retype_password" type="text" name="retype_password"
+                            placeholder="Retype Password" required oninput="continuousValidatePassword()"/>
+                        
+                        <input class="input-box" id="f_name" type="text" name="f_name" placeholder="First Name" oninput="continuousValidateFirstName()"/>
+                        
+                        <input class="input-box" id="l_name" type="text" name="l_name" placeholder="Last Name" oninput="continuousValidateLastName()"/>
+                        <input class="input-box" id="profile-upload" type="file" name="profile_picture"
+                            accept=".jpg,.jpeg,.png,.gif" placeholder="Profile Picture" required />
+                            
+                        <button class="input-box" type="reset" id="reset" onclick="resetValidate()">Clear</button>
+                        <button class="input-box" type="submit" id="submit">Register</button>
+                    </form>
+                    <button type="button" class="btn" onclick="openLogin()" id="back-btn">
+                        Go Back
+                    </button>
+                </div>
+            </div>
+        </div>
+    </div>
+    <script src="js\login-page.js"></script>
+</body>
+
+</html>
