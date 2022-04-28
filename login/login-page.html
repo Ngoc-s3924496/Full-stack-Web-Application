@@ -20,7 +20,7 @@
                         <input type="password" name="password" class="input-box" placeholder="Your Password" required />
                         <button type="submit" class="submit-btn">Log In</button>
                     </form>
-                    
+
                     <button type="button" class="btn" onclick="openRegister()">
                         Don't have an account? Register here
                     </button>
@@ -28,22 +28,43 @@
                 <div class="card-back">
                     <h2>REGISTER</h2>
                     <form action="#" method="#" enctype="multipart/form-data">
-                        <input class="input-box" id="email" type="email" name="email" placeholder="Your Email"
-                            required oninput="continuousValidateEmail()" />
-                        <input class="input-box" id="password" type="password" name="password"
-                            placeholder="Your Password" required oninput="continuousValidatePassword()"/>
-                        
+                        <input class="input-box" id="email" type="email" name="email" placeholder="Your Email" required
+                            oninput="continuousValidateEmail()" />
+                        <div class="popup" onclick="showContent()">
+                            <span class="popuptext" id="myPopup">
+                                Password is 8-20 characters
+                                <br>
+                                At least one of the each in the following :
+                                <br>
+                                1 Lower-case
+                                <br>
+                                1 Upper-case
+                                <br>
+                                1 Digit
+                                <hr>
+                                - Click in this box to close -
+                            </span>
+                            <input class="input-box popup" id="password" type="password" name="password"
+                                placeholder="Your Password" required oninput="continuousValidatePassword()" />
+                        </div>
+
                         <input class="input-box" id="retype_password" type="password" name="retype_password"
-                            placeholder="Retype Password" required oninput="continuousValidatePassword()"/>
+                            placeholder="Retype Password" required oninput="continuousValidatePassword()" />
                         
-                        <input class="input-box" id="f_name" type="text" name="f_name" placeholder="First Name" oninput="continuousValidateFirstName()"/>
-                        
-                        <input class="input-box" id="l_name" type="text" name="l_name" placeholder="Last Name" oninput="continuousValidateLastName()"/>
+                        <input class="input-box" id="f_name" type="text" name="f_name" placeholder="First Name"
+                            oninput="continuousValidateFirstName()" />
+
+                        <input class="input-box" id="l_name" type="text" name="l_name" placeholder="Last Name"
+                            oninput="continuousValidateLastName()" />
                         <input class="input-box" id="profile-upload" type="file" name="profile_picture"
                             accept=".jpg,.jpeg,.png,.gif" placeholder="Profile Picture" required />
-                            
-                        <button class="input-box" type="reset" id="reset" onclick="resetValidate()">Clear</button>
-                        <button class="input-box" type="submit" id="submit">Register</button>
+
+                        <button class="input-box" type="reset" id="reset" onclick="resetValidate()">
+                            Clear
+                        </button>
+                        <button class="input-box" type="submit" id="submit">
+                            Register
+                        </button>
                     </form>
                     <button type="button" class="btn" onclick="openLogin()" id="back-btn">
                         Go Back
