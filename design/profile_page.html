@@ -5,54 +5,49 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
 	<link rel="stylesheet" href="assets/bootstrap.css"/>
-    <link rel="stylesheet" href="assets/style2.css"/>
+    <link rel="stylesheet" href="assets/profile_page.css"/>
 	<link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;500;700&display=swap" rel="stylesheet">
     <script src="https://kit.fontawesome.com/78d03b3312.js" crossorigin="anonymous"></script>    
     <title>Jane Doe</title>
 </head>
 <body>
-    <nav>
-        <div class="navigation">
-            <div class="logo">
-                <a class="no-underline" href="index.html">
-                    <img src="https://www.instagram.com/static/images/web/mobile_nav_type_logo.png/735145cfe0a4.png"/>
-                </a>
-            </div>
-            <div class="navigation-search-container">
-                <i class="fa fa-search"></i>
-                <form>
-                    <input class="search-field" type="text" placeholder="Search" id="search-bar">
-                    <div class="search-container">
-                        <div class="search-container-box">
-                                <div class="search-results">
+	<nav>
+		<div class="navigation">
+			<div class="logo">
+				<a class="no-underline" href="index.html">
+					<img src="https://www.instagram.com/static/images/web/mobile_nav_type_logo.png/735145cfe0a4.png"/>
+				</a>
+			</div>
+			<div class="navigation-search-container">
+				<i class="fa fa-search"></i>
+				<form>
+					<input class="search-field" type="text" placeholder="Search" id="search-bar">
+					<div class="search-container">
+						<div class="search-container-box">
+								<div class="search-results">
 
-                                </div>
-                        </div>
-                    </div>
-                </form>
-            </div>
-            <div class="navigation-icons">
-               <a href="index.html" class="navigation-link">
-                    <i class="fa-solid fa-house"></i>
-                </a>
-                <a href="#" class="navigation-link">
-                    <i class="fa-brands fa-facebook-messenger"></i>
-                </a>
-                <a class="navigation-link notifica">
-                    <i class="fa-solid fa-heart">
-                        <div class="notification-bubble-wrapper">
-                            <div class="notification-bubble">
-                                <span class="notifications-count">99</span>
-                            </div>
-                        </div>
-                    </i>
-                </a>
-                <a href="profile.html" class="navigation-link user-icon">
-                    <i class="far fa-user-circle"></i>
-                </a>
-            </div>
-        </div>
-    </nav>
+								</div>
+						</div>
+					</div>
+				</form>
+			</div>
+			<div class="navigation-icons">
+			<a href="index.html" class="navigation-link">
+					<i class="fa-solid fa-house"></i>
+				</a>
+				<a href="#" class="navigation-link">
+					<i class="fa-brands fa-facebook-messenger"></i>
+				</a>
+				<a class="navigation-link">
+					<i class="fa-solid fa-heart" id="heart_nav">
+					</i>
+				</a>
+				<a href="profile_page.html" class="navigation-link user-icon">
+					<img src="https://images.unsplash.com/photo-1513721032312-6a18a42c8763?w=152&h=152&fit=crop&crop=faces" alt="avatar" class="rounded-circle">
+				</a>
+			</div>
+		</div>
+	</nav>
 <header>
 
 	<div class="container my-5 border-bottom">
@@ -61,7 +56,7 @@
 
 			<div class="profile-image">
 
-				<img src="https://images.unsplash.com/photo-1513721032312-6a18a42c8763?w=152&h=152&fit=crop&crop=faces" alt="">
+				<button class="change_img" name="change_img"><img src="https://images.unsplash.com/photo-1513721032312-6a18a42c8763?w=152&h=152&fit=crop&crop=faces" alt="avatar"></button>
 
 			</div>
 
@@ -69,7 +64,7 @@
 
 				<h1 class="profile-user-name">janedoe_</h1>
 
-				<button class="profile-btn profile-edit-btn">Edit Profile</button>
+				<button class="profile-btn profile-edit-btn">Add post</button>
 
 				<button class="profile-btn profile-settings-btn" aria-label="profile settings"><i class="fas fa-cog" aria-hidden="true"></i></button>
 

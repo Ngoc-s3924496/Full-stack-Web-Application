@@ -5,14 +5,14 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Log In</title>
-    <link rel="stylesheet" href="\css\login-page.css" />
+    <link rel="stylesheet" href="css\login-page.css" />
 </head>
 
 <body>
     <div class="container">
         <div class="card">
             <div class="inner-box" id="card">
-                <!-- <div class="card-front">
+                <div class="card-front">
                     <h2>LOGIN</h2>
                     <form action="/php/register.php" method="post" enctype="multipart/form-data">
                         <input type="text" name="username" class="input-box" placeholder="Your Email" required />
@@ -24,7 +24,7 @@
                     <button type="button" class="btn" onclick="openRegister()">
                         Don't have an account? Register here
                     </button>
-                </div> -->
+                </div>
                 <div class="card-back">
                     <h2>REGISTER</h2>
                     <form action="../php/register.php" method="post" enctype="multipart/form-data">
@@ -58,7 +58,7 @@
             </div>
         </div>
     </div>
-    <script src="\js\login-page.js"></script>
+    <script src="js\login-page.js"></script>
 </body>
 <!-- <script>
 var fileInput = document.getElementById('profile-upload');

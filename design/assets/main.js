@@ -1,3 +1,12 @@
+document.getElementById("heart_nav").onclick = function(){change_color(document.getElementById("heart_nav"))};
+function change_color(element) {
+  if (element.style.color == "" || element.style.color == "black"){
+    element.style.color = "red";
+  } else{
+    element.style.color = "black";
+  }
+}
+
 var heart_click = document.querySelectorAll(".heart");
 for (i = 0; i < heart_click.length; i++) {
   let click = heart_click[i];

@@ -5,7 +5,7 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="assets/bootstrap.css"/>
-    <link rel="stylesheet" href="assets/style.css"/>
+    <link rel="stylesheet" href="assets/newsfeed.css"/>
     <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;500;700&display=swap" rel="stylesheet">
     <script src="assets/main.js" defer></script></script>
     <script src="https://kit.fontawesome.com/78d03b3312.js" crossorigin="anonymous"></script>
@@ -40,18 +40,11 @@
                     <a href="#" class="navigation-link">
                         <i class="fa-brands fa-facebook-messenger"></i>
                     </a>
-                    <a class="navigation-link notifica">
-                        <i class="fa-solid fa-heart">
-                            <div class="notification-bubble-wrapper">
-                                <div class="notification-bubble">
-                                    <span class="notifications-count">99</span>
-                                </div>
-                            </div>
+                    <a class="navigation-link">
+                        <i class="fa-solid fa-heart" id="heart_nav">
                         </i>
                     </a>
-                    <a href="profile.html" class="navigation-link user-icon">
-                        <i class="far fa-user-circle"></i>
-                    </a>
+                    <a href="login_page.html" class="navigation-link login">Log in</a>
                 </div>
             </div>
         </nav>
@@ -61,9 +54,6 @@
         <div class="row">
             <div class="col-md-1"></div>
             <div class="col-md-7">
-            <section class="d-flex justify-content-center w-100" id="post">
-                <button class="post-btn">Add post</button>
-            </section>
             <section class="newfeed my-5">
                 <div class="feed">
                     <div class="card border">
@@ -71,7 +61,7 @@
                             <!-------------Author-------------->
                             <div class="row">
                                 <div class="col-md-8">
-                                    <div class="d-flex avatar">
+                                    <div class="d-flex">
                                         <img src="https://images.unsplash.com/photo-1513721032312-6a18a42c8763?w=152&h=152&fit=crop&crop=faces" class="rounded-circle" height="40" alt="Avatar">
                                         <div class="mt-2">
                                             <a href="" class="text-dark">
@@ -94,7 +84,7 @@
                             <div class="container">
                                 <div class="row">
                                     <div class="col-md-12">
-                                        <i class="far fa-heart heart icon-size ml-0" id="abc"></i>
+                                        <i class="far fa-heart heart icon-size ml-0"></i>
                                         <i class="far fa-comment icon-size mx-3"></i>
                                         <i class="far fa-paper-plane icon-size"></i>
                                         <i class="far fa-bookmark bookmark icon-size float-right"></i>
