@@ -24,6 +24,33 @@ function check_email($email_string) {
     }
 }
 
+function check_email_duplicated($email_string, $database_path) {
+    $data = retrieve_data($database_path);
+    for ($i = 0; $i <= count($data); $i++) {
+        if (strtolower($email_string) === strtolower($data[$i]['email'])) {
+            return true;
+        } else {
+            return false;
+        }
+    }
+}
+
+function check_email_password_matched($email_string, $password_string, $database_path) {
+    $data = retrieve_data($database_path);
+    for ($i = 0; $i <= count($data); $i++) {
+        if ($email_string === $data[$i]['email']) {
+            if (password_verify($password_string, $data[$i]['password'])) {
+                return true;
+                break;
+            } else {
+                return false;
+            }
+        } else {
+            continue;
+        }
+    }
+}
+
 function check_password($password_string) {
     $pattern = "/^(?=.*\d)(?=.*[A-Z])(?=.*[a-z])(.{8,21})$/";
     if (preg_match($pattern, $password_string)) {
@@ -64,20 +91,96 @@ function check_file_size($img) {
     } else {
         return true;
     }
-} 
+}
 
-function upload_img($img_file) {
-    $target_dir = "../../UserData/UploadImage/";
-    $target_file = $target_dir . basename($img_file["name"]);
-    if (move_uploaded_file($img_file['tmp_name'], $target_file)) {
-        echo "<script>alert('Upload successfully')</script>";
+function register_profile_img_name($username) {
+    $name_frame = 'Profile_Img_';
+    $name = $name_frame . $username;
+    return $name;
+}
+
+function rename_img($img, $new_name, $database_path) {
+    $old_path = $database_path . $img;
+    $new_path = $database_path . $new_name;
+    return rename($old_path, $new_path);
+}
+
+function get_name_via_email($email_string) {
+    $email_string = substr($email_string, 0, strpos($email_string, '@'));
+    return $email_string;
+}
+
+// function extract_email_name_at_char($email_string, $character) {
+//     $email_string = substr($email_string, 0, strpos($email_string, '@'));
+//     return $email_string;
+// }
+
+function get_file_extension($file) {
+    $path_part = pathinfo($file);
+    $file_extension = "." . $path_part['extension'];
+    return $file_extension;
+}
+
+function upload_img_profile($img_file, $email_string, $fname, $lname, $dir) {
+    $email_string = substr($email_string, 0, strpos($email_string, '@'));
+    $target_dir = $dir . $email_string;
+    $new_file_name = register_profile_img_name($fname . $lname);
+    $new_target_file_name = $target_dir . "/" . $new_file_name;
+    $target_file = $target_dir . "/" . basename($img_file["name"]);
+    $file_extension = get_file_extension($target_file);
+    $new_target_file_name .= $file_extension;
+    if (file_exists($target_dir)) {
+        return false;
     } else {
-        echo "<script>alert('Upload failed')</script>";
+        if (!mkdir($target_dir, 0777, true)) {
+            return false;
+        } else {
+            if (move_uploaded_file($img_file['tmp_name'], $target_file)) {
+                rename($target_file, $new_target_file_name);
+                return true;
+            } else {
+                return false;
+            }
+        }
     }
 }
 
-function verify_img($img_file) {
-    $target_dir = "../../UserData/UploadImage/";
+function update_img_profile($img_file, $email_string, $fname, $lname, $dir) {
+    $email_string = substr($email_string, 0, strpos($email_string, '@'));
+    $target_dir = $dir . $email_string;
+    $new_file_name = register_profile_img_name($fname . $lname);
+    $new_target_file_name = $target_dir . "/" . $new_file_name;
+    $target_file = $target_dir . "/" . basename($img_file["name"]);
+    $file_extension = get_file_extension($target_file);
+    $new_target_file_name .= $file_extension;
+    if (move_uploaded_file($img_file['tmp_name'], $target_file)) {
+        rename($target_file, $new_target_file_name);
+        return true;
+    } else {
+        return false;
+    }
+}
+
+function delete_img($img_file, $email_string, $dir) {
+    global $error_no_img;
+    $email_string = substr($email_string, 0, strpos($email_string, '@'));
+    $target_dir = $dir . $email_string;
+    if (file_exists($target_dir)) {
+        $target_file = $target_dir . "/" . basename($img_file["name"]);
+        if (unlink($target_file)) {
+            return true;
+        } else {
+            $error_no_img = 'Cannot delete image!';
+            return false;
+        }
+    } else {
+        $error_no_img = 'There are no images!';
+        return false;
+    }
+}
+
+function verify_img($img_file, $target_dir) {
+    global $error_img;
     $target_file = $target_dir . basename($img_file["name"]);
     if (check_img_real($img_file)) {
         if (!check_img_exist($target_file)) {
@@ -85,19 +188,45 @@ function verify_img($img_file) {
                 if (check_img_type($target_file)) {
                     return true;
                 } else {
-                    echo "<script>alert('Only JPG, JPEG, PNG and GIF files are allowed!')</script>";
+                    $error_img = 'Only JPG, JPEG, PNG and GIF files are allowed!';
                     return false;
                 }
             } else {
-                echo "<script>alert('Your file is too large!')</script>";
+                $error_img = 'Your file is too large!';
                 return false;
             }   
         } else {
-            echo "<script>alert('File is already exist!')</script>";
+            $error_img = 'File is already exist!';
             return false;
         }
     } else {
-        echo "<script>alert('File is not an image!')</script>";
+        $error_img = 'File is not an image!';
         return false;
     }
+}
+
+function verify_update_img($img_file, $target_dir) {
+    global $error_update_img;
+    $target_file = $target_dir . basename($img_file["name"]);
+    if (check_img_real($img_file)) {
+        if (check_file_size($img_file)) {
+            if (check_img_type($target_file)) {
+                return true;
+            } else {
+                $error_update_img = 'Only JPG, JPEG, PNG and GIF files are allowed!';
+                return false;
+            }
+        } else {
+            $error_update_img = 'Your file is too large!';
+            return false;
+        }   
+    } else {
+        $error_update_img = 'File is not an image!';
+        return false;
+    }
+}
+
+function retrieve_data($database_path) {
+    $decoded_data = json_decode(file_get_contents($database_path), true);
+    return $decoded_data;
 }
