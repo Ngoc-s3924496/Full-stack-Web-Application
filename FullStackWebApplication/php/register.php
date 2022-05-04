@@ -46,7 +46,7 @@ if (isset($_POST['submit'])) {
         $error_password = 'Password is not strong enough';
     }
     //  Verify image
-    if (!verify_img($profile_img, "../../UserData/UploadImages/")) {
+    if (!verify_img($profile_img, "../../UserData/ProfileImages/")) {
         $registerOK = 0;
         global $error_image;
         $error_image = $error_img;
@@ -60,7 +60,7 @@ if (isset($_POST['submit'])) {
         'registered_time' => $register_time
     ];
     if ($registerOK == 1) {
-        upload_img_profile($profile_img, $email, $fname, $lname, "../../UserData/UploadImages/");
+        upload_img_profile($profile_img, $email, $fname, $lname, "../../UserData/ProfileImages/");
         if (filesize('../../UserData/UserAccounts/accounts.db') == 0) {
             $first_record = [$form_data];
             $data_to_save = $first_record;
