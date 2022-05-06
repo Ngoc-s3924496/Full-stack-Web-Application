@@ -12,6 +12,8 @@ if (isset($_POST['login'])) {
     $user_database_path = '../../UserData/UserAccounts/accounts.db';
     $data = retrieve_data($user_database_path);
     $_SESSION[$unique_mail_id] = $email;
+    $ipaddress = $_SERVER['REMOTE_ADDR'];
+    $error_login = $ipaddress . '_error_login';
     if (check_email_password_matched($email, $password, $user_database_path)) {
         for ($i = 0; $i <= count($data); $i++) {
             foreach ($data[$i] as $key => $value) {
@@ -26,7 +28,7 @@ if (isset($_POST['login'])) {
         }
         header("Location: /FullStackWebApplication/design/profile_page.php");
     } else {
-        $error_login = 'Wrong email or password!';
+        $_SESSION[$error_login] = 'Wrong email or password!';
         header("Location: /FullStackWebApplication/login/login-page.php");
     }
 }
