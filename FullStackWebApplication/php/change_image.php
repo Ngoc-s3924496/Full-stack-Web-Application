@@ -1,15 +1,15 @@
 <?php
 include_once("functions.php");
 if (isset($_POST['save'])) {
-    global $update_profile_img;
     session_start();
-    $ip_address = $_SERVER['REMOTE_ADDR'];
-    $unique_mail_id = $ip_address . '_email';
-    $unique_fname_id = $ip_address . '_fname';
-    $unique_lname_id = $ip_address . '_lname';
+    $ipaddress = $_SERVER['REMOTE_ADDR'];
+    $unique_mail_id = $ipaddress . '_email';
+    $unique_fname_id = $ipaddress . '_fname';
+    $unique_lname_id = $ipaddress . '_lname';
     $email = $_SESSION[$unique_mail_id];
     $fname = $_SESSION[$unique_fname_id];
     $lname = $_SESSION[$unique_lname_id];
+    $update_profile_img_status = $ipaddress . '_update_img_status';
     $uploadOK = 1;
     $new_img = $_FILES['change_img'];
     $user_database = "../../UserData/UserAccounts/accounts.db";
@@ -33,22 +33,27 @@ if (isset($_POST['save'])) {
                     }
                     if ($uploadOK) {
                         if (update_img_profile($new_img, $email, $fname, $lname, $img_database)) {
-                            $update_profile_img = 'Profile picture is updated!';
+                            $_SESSION[$update_profile_img_status] = 'Profile picture is updated!';
                             header('Location: /FullStackWebApplication/design/profile_page.php');
                         }
                     } else {
-                        $update_profile_img = 'Profile picture cannot be updated!';
+                        $_SESSION[$update_profile_img_status] = 'Profile picture cannot be updated!';
                         header('Location: /FullStackWebApplication/design/profile_page.php');
                     }
                     break;
                 } else {
-                    $update_profile_img = $error_update_img;
+                    $_SESSION[$update_profile_img_status] = $_SESSION[$error_update_img];
                     header('Location: /FullStackWebApplication/design/profile_page.php');
                 }
             } else {
-                if (update_img_profile($new_img, $email, $fname, $lname, $img_database)) {
-                    $update_profile_img = 'Profile picture is updated!';
-                    header('Location: /FullStackWebApplication/design/profile_page.php');
+                if (verify_update_img($new_img, $img_database)) {
+                    if (update_img_profile($new_img, $email, $fname, $lname, $img_database)) {
+                        $_SESSION[$update_profile_img_status] = 'Profile picture is updated!';
+                        header('Location: /FullStackWebApplication/design/profile_page.php');
+                    }
+                } else {
+                    $_SESSION[$update_profile_img_status] = $_SESSION[$error_update_img];
+                    header('Location: /FullStackWebApplication/design/profile_page.php'); 
                 }
             }
         } else {

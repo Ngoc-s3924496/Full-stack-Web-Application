@@ -1,8 +1,11 @@
 <?php
+session_start();
+$ipaddress = $_SERVER['REMOTE_ADDR'];
+
 function clean_text($data_string) {
     $data_string = trim($data_string);
     $data_string = stripslashes($data_string);
-    $data_string = htmlspecialchars($data_string);
+    $data_string = htmlspecialchars($data_string, ENT_QUOTES);
     return $data_string;
 }
 
@@ -26,12 +29,19 @@ function check_email($email_string) {
 
 function check_email_duplicated($email_string, $database_path) {
     $data = retrieve_data($database_path);
+    $true = 0;
     for ($i = 0; $i <= count($data); $i++) {
         if (strtolower($email_string) === strtolower($data[$i]['email'])) {
-            return true;
+            $true = 1;
+            break;
         } else {
-            return false;
+            continue;
         }
+    }
+    if ($true === 1) {
+        return true;
+    } else {
+        return false;
     }
 }
 
@@ -52,7 +62,7 @@ function check_email_password_matched($email_string, $password_string, $database
 }
 
 function check_password($password_string) {
-    $pattern = "/^(?=.*\d)(?=.*[A-Z])(?=.*[a-z])(.{8,21})$/";
+    $pattern = "/^(?=.*\d)(?=.*[A-Z])(?=.*[a-z])(.{8,20})$/";
     if (preg_match($pattern, $password_string)) {
         return true;
     } else {
@@ -110,11 +120,6 @@ function get_name_via_email($email_string) {
     return $email_string;
 }
 
-// function extract_email_name_at_char($email_string, $character) {
-//     $email_string = substr($email_string, 0, strpos($email_string, '@'));
-//     return $email_string;
-// }
-
 function get_file_extension($file) {
     $path_part = pathinfo($file);
     $file_extension = "." . $path_part['extension'];
@@ -165,42 +170,44 @@ function delete_img($img_file, $email_string, $dir) {
     global $error_no_img;
     $email_string = substr($email_string, 0, strpos($email_string, '@'));
     $target_dir = $dir . $email_string;
+    $error_delete_img = $ipaddress . '_error_delete_img';
     if (file_exists($target_dir)) {
         $target_file = $target_dir . "/" . basename($img_file["name"]);
         if (unlink($target_file)) {
             return true;
         } else {
-            $error_no_img = 'Cannot delete image!';
+            $_SESSION[$error_delete_img] = 'Cannot delete image!';
             return false;
         }
     } else {
-        $error_no_img = 'There are no images!';
+        $_SESSION[$error_delete_img] = 'There are no images!';
         return false;
     }
 }
 
 function verify_img($img_file, $target_dir) {
-    global $error_img;
+    global $error_upload_img;
     $target_file = $target_dir . basename($img_file["name"]);
+    $error_upload_img = $ipaddress . '_error_upload_img';
     if (check_img_real($img_file)) {
         if (!check_img_exist($target_file)) {
             if (check_file_size($img_file)) {
                 if (check_img_type($target_file)) {
                     return true;
                 } else {
-                    $error_img = 'Only JPG, JPEG, PNG and GIF files are allowed!';
+                    $_SESSION[$error_upload_img] = 'Only JPG, JPEG, PNG and GIF files are allowed!';
                     return false;
                 }
             } else {
-                $error_img = 'Your file is too large!';
+                $_SESSION[$error_upload_img] = 'Your file is too large!';
                 return false;
             }   
         } else {
-            $error_img = 'File is already exist!';
+            $_SESSION[$error_upload_img] = 'File is already exist!';
             return false;
         }
     } else {
-        $error_img = 'File is not an image!';
+        $_SESSION[$error_upload_img] = 'File is not an image!';
         return false;
     }
 }
@@ -208,20 +215,21 @@ function verify_img($img_file, $target_dir) {
 function verify_update_img($img_file, $target_dir) {
     global $error_update_img;
     $target_file = $target_dir . basename($img_file["name"]);
+    $error_update_img = $ipaddress . '_error_update_img';
     if (check_img_real($img_file)) {
         if (check_file_size($img_file)) {
             if (check_img_type($target_file)) {
                 return true;
             } else {
-                $error_update_img = 'Only JPG, JPEG, PNG and GIF files are allowed!';
+                $_SESSION[$error_update_img] = 'Only JPG, JPEG, PNG and GIF files are allowed!';
                 return false;
             }
         } else {
-            $error_update_img = 'Your file is too large!';
+            $_SESSION[$error_update_img] = 'Your file is too large!';
             return false;
         }   
     } else {
-        $error_update_img = 'File is not an image!';
+        $_SESSION[$error_update_img] = 'File is not an image!';
         return false;
     }
 }
