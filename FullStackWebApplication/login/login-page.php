@@ -1,4 +1,5 @@
 <html lang="en">
+<?php session_start()?>
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -21,7 +22,7 @@
                     <input type="password" name="password_login" id="password">
                 </div>
                 <div class="control">
-                    <input type="submit" value="Login">
+                    <input type="submit" name='login' value="Login">
                 </div>
             </form>
             <p><?php 

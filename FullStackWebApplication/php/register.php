@@ -20,14 +20,14 @@ if (isset($_POST['submit'])) {
     if (!check_name($fname)) {
         $registerOK = 0;
         $error_fname = $ipaddress . '_error_fname';
-        $_SESSION[$error_fname] = 'First name must have more than 1 and less than 22 characters!';
+        $_SESSION[$error_fname] = 'First name must have more than 1 and less than 21 characters!';
     }
 
     // Verify last name
     if (!check_name($lname)) {
         $registerOK = 0;
         $error_lname = $ipaddress . "_error_lname";
-        $_SESSION[$error_lname] = 'Last name must have more than 1 and less than 22 characters!';
+        $_SESSION[$error_lname] = 'Last name must have more than 1 and less than 21 characters!';
     }
 
     // Verify email

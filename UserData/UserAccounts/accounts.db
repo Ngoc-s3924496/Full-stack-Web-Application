@@ -1,26 +1,5 @@
 [
     {
-        "f_name": "Thach",
-        "l_name": "Le",
-        "email": "baothach10@gmail.com",
-        "password": null,
-        "registered_time": "30\/04\/2022 18:00:47 UTC"
-    },
-    {
-        "f_name": "Ngoc",
-        "l_name": "Nguyen",
-        "email": "ngoc@gmail.com",
-        "password": null,
-        "registered_time": "30\/04\/2022 18:02:46 UTC"
-    },
-    {
-        "f_name": "Binh",
-        "l_name": "Ngo",
-        "email": "hello@gmail.com",
-        "password": null,
-        "registered_time": "30\/04\/2022 18:05:14 UTC"
-    },
-    {
         "f_name": "Luan",
         "l_name": "Nguyen",
         "email": "Luan@gmail.com",
@@ -42,13 +21,6 @@
         "registered_time": "30\/04\/2022 18:52:47 UTC"
     },
     {
-        "f_name": "Quang",
-        "l_name": "Le",
-        "email": "quangle@gmail.com",
-        "password": "$2y$10$Bx11iYQvuDxNLtcyb0LtiuDwvi5qZJhH23yTuazzUs7CCBKlZ.6Nm",
-        "registered_time": "01\/05\/2022 04:35:06 UTC"
-    },
-    {
         "f_name": "Dung",
         "l_name": "Le",
         "email": "quangdung@gmail.com",
@@ -68,13 +40,6 @@
         "email": "jamie.jay@gmail.com",
         "password": "$2y$10$9MX4fGWJlODcXkq4Ld1I2OAtlRgoQV6yRY4AyZ2aPgAkYt6M8XeyC",
         "registered_time": "01\/05\/2022 06:25:19 UTC"
-    },
-    {
-        "f_name": "Thach",
-        "l_name": "Duong",
-        "email": "thach@gmail.com",
-        "password": null,
-        "registered_time": "01\/05\/2022 07:48:15 UTC"
     },
     {
         "f_name": "Thong",
@@ -110,5 +75,19 @@
         "email": "loinguyen@gmail.com",
         "password": "$2y$10$EPRw9QZcvI9NgEux\/PMj9e99DkVWtWHMefti4oeMzLpXzwtoXwEA.",
         "registered_time": "06\/05\/2022 17:20:18 UTC"
+    },
+    {
+        "f_name": "&lt;Quan&gt;",
+        "l_name": "&lt;Nguyen&gt;",
+        "email": "quannguyen@gmail.com",
+        "password": "$2y$10$ycyb1dnlPf8Y\/Pt83KzdZOg0xxbRYdN\/MkK.ai3EIP.Mtx.yO6HDC",
+        "registered_time": "08\/05\/2022 13:08:55 UTC"
+    },
+    {
+        "f_name": "Luan",
+        "l_name": "Doan",
+        "email": "luandoan@gmail.com",
+        "password": "$2y$10$n\/UYZGTJmbObIjqgiIe9kuwrzr0eX0KannXDsvOIuaguzr98SAGcW",
+        "registered_time": "08\/05\/2022 13:21:09 UTC"
     }
 ]

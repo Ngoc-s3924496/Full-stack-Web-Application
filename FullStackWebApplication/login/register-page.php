@@ -1,5 +1,5 @@
 <html lang="en">
-
+<?php session_start()?>
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -63,7 +63,7 @@
                 </div>
                 <div class="control">
                     <label for="password">Profile Picture</label>
-                    <input id="profile-upload" type="file" name="profile_picture" required />
+                    <input id="profile-upload" type="file" name="profile_picture"/>
                     <p class="error"><?php
                         $ipaddress = $_SERVER['REMOTE_ADDR'];
                         $error_upload_img = $ipaddress . '_error_upload_img';
@@ -74,7 +74,7 @@
                     <button class="input-box" type="reset" id="reset" onclick="resetValidate()">
                         Clear
                     </button>
-                    <button class="input-box" type="submit" id="submit">
+                    <button class="input-box" type="submit" id="submit" name="submit">
                         Register
                     </button>
                 </div>
