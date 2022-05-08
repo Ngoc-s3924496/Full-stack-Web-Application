@@ -110,5 +110,12 @@
         "email": "loinguyen@gmail.com",
         "password": "$2y$10$EPRw9QZcvI9NgEux\/PMj9e99DkVWtWHMefti4oeMzLpXzwtoXwEA.",
         "registered_time": "06\/05\/2022 17:20:18 UTC"
+    },
+    {
+        "f_name": "&lt;Quan&gt;",
+        "l_name": "&lt;Nguyen&gt;",
+        "email": "quannguyen@gmail.com",
+        "password": "$2y$10$ycyb1dnlPf8Y\/Pt83KzdZOg0xxbRYdN\/MkK.ai3EIP.Mtx.yO6HDC",
+        "registered_time": "08\/05\/2022 13:08:55 UTC"
     }
 ]
