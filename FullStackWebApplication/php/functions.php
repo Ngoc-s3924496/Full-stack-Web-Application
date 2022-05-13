@@ -109,6 +109,12 @@ function register_profile_img_name($username) {
     return $name;
 }
 
+function upload_img_name($username) {
+    $name_frame = 'Upload_Img_';
+    $name = $name_frame . $username;
+    return $name;
+}
+
 function rename_img($img, $new_name, $database_path) {
     $old_path = $database_path . $img;
     $new_path = $database_path . $new_name;
@@ -213,23 +219,21 @@ function verify_img($img_file, $target_dir) {
 }
 
 function verify_update_img($img_file, $target_dir) {
-    global $error_update_img;
     $target_file = $target_dir . basename($img_file["name"]);
-    $error_update_img = $ipaddress . '_error_update_img';
     if (check_img_real($img_file)) {
         if (check_file_size($img_file)) {
             if (check_img_type($target_file)) {
                 return true;
             } else {
-                $_SESSION[$error_update_img] = 'Only JPG, JPEG, PNG and GIF files are allowed!';
+                $_SESSION['error_update'] = 'Only JPG, JPEG, PNG and GIF files are allowed!';
                 return false;
             }
         } else {
-            $_SESSION[$error_update_img] = 'Your file is too large!';
+            $_SESSION['error_update'] = 'Your file is too large!';
             return false;
         }   
     } else {
-        $_SESSION[$error_update_img] = 'File is not an image!';
+        $_SESSION['error_update'] = 'File is not an image!';
         return false;
     }
 }
@@ -238,3 +242,29 @@ function retrieve_data($database_path) {
     $decoded_data = json_decode(file_get_contents($database_path), true);
     return $decoded_data;
 }
+
+function upload_img($img_file, $email_string, $fname, $lname, $unix_time, $dir) {
+    $email_string = substr($email_string, 0, strpos($email_string, '@'));
+    $target_dir = $dir . $email_string . '/' .'Images';
+    $new_file_name = upload_img_name((explode('.',$img_file['name'])[0]) . '@' . $email_string . '@@' . $unix_time);
+    $new_target_file_name = $target_dir . "/" . $new_file_name;
+    $target_file = $target_dir . "/" . basename($img_file["name"]);
+    $file_extension = get_file_extension($target_file);
+    $new_target_file_name .= $file_extension;
+    if (move_uploaded_file($img_file['tmp_name'], $target_file)) {
+        rename($target_file, $new_target_file_name);
+        return true;
+    } else {
+        return false;
+    }
+}
+
+function get_profile_img($email_string, $fname, $lname, $dir) {
+    $email_string = substr($email_string, 0, strpos($email_string, '@'));
+    $target_dir = $dir . $email_string;
+    $profile_img_dtb_path = glob($target_dir . '/*');
+    foreach ($profile_img_dtb_path as $profile_img) {
+        return $profile_img;
+    }
+}
+

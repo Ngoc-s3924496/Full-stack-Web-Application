@@ -2,14 +2,14 @@
 include_once("functions.php");
 if (isset($_POST['save'])) {
     session_start();
-    $ipaddress = $_SERVER['REMOTE_ADDR'];
-    $unique_mail_id = $ipaddress . '_email';
-    $unique_fname_id = $ipaddress . '_fname';
-    $unique_lname_id = $ipaddress . '_lname';
-    $email = $_SESSION[$unique_mail_id];
-    $fname = $_SESSION[$unique_fname_id];
-    $lname = $_SESSION[$unique_lname_id];
-    $update_profile_img_status = $ipaddress . '_update_img_status';
+    // $ipaddress = $_SERVER['REMOTE_ADDR'];
+    // $unique_mail_id = $ipaddress . '_email';
+    // $unique_fname_id = $ipaddress . '_fname';
+    // $unique_lname_id = $ipaddress . '_lname';
+    $email = $_SESSION['email'];
+    $fname = $_SESSION['fname'];
+    $lname = $_SESSION['lname'];
+    // $update_profile_img_status = $ipaddress . '_update_img_status';
     $uploadOK = 1;
     $new_img = $_FILES['change_img'];
     $user_database = "../../UserData/UserAccounts/accounts.db";
@@ -17,7 +17,6 @@ if (isset($_POST['save'])) {
     $img_database = "../../UserData/ProfileImages/";
     $file = substr($email, 0, strpos($email, '@'));
     $file_path = $img_database . $file . '/' . '*';
-    echo $file_path;
     $file_location = glob($file_path);
     for ($i = 0; $i <= count($data); $i++) {
         if (strtolower($email) === strtolower($data[$i]['email'])) {
