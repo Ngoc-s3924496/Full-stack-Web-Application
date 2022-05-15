@@ -1,7 +1,4 @@
 <?php
-session_start();
-$ipaddress = $_SERVER['REMOTE_ADDR'];
-
 function clean_text($data_string) {
     $data_string = trim($data_string);
     $data_string = stripslashes($data_string);
@@ -115,6 +112,12 @@ function rename_img($img, $new_name, $database_path) {
     return rename($old_path, $new_path);
 }
 
+function upload_img_name($username) {
+    $name_frame = 'Upload_Img_';
+    $name = $name_frame . $username;
+    return $name;
+}
+
 function get_name_via_email($email_string) {
     $email_string = substr($email_string, 0, strpos($email_string, '@'));
     return $email_string;
@@ -167,20 +170,18 @@ function update_img_profile($img_file, $email_string, $fname, $lname, $dir) {
 }
 
 function delete_img($img_file, $email_string, $dir) {
-    global $error_no_img;
     $email_string = substr($email_string, 0, strpos($email_string, '@'));
     $target_dir = $dir . $email_string;
-    $error_delete_img = $ipaddress . '_error_delete_img';
     if (file_exists($target_dir)) {
         $target_file = $target_dir . "/" . basename($img_file["name"]);
         if (unlink($target_file)) {
             return true;
         } else {
-            $_SESSION[$error_delete_img] = 'Cannot delete image!';
+            $_SESSION['error_delete'] = 'Cannot delete image!';
             return false;
         }
     } else {
-        $_SESSION[$error_delete_img] = 'There are no images!';
+        $_SESSION['error_delete'] = 'There are no images!';
         return false;
     }
 }
@@ -188,6 +189,7 @@ function delete_img($img_file, $email_string, $dir) {
 function verify_img($img_file, $target_dir) {
     global $error_upload_img;
     $target_file = $target_dir . basename($img_file["name"]);
+    global $ipaddress;
     $error_upload_img = $ipaddress . '_error_upload_img';
     if (check_img_real($img_file)) {
         if (!check_img_exist($target_file)) {
@@ -195,41 +197,39 @@ function verify_img($img_file, $target_dir) {
                 if (check_img_type($target_file)) {
                     return true;
                 } else {
-                    $_SESSION[$error_upload_img] = 'Only JPG, JPEG, PNG and GIF files are allowed!';
+                    $_SESSION['error_register'] = 'Only JPG, JPEG, PNG and GIF files are allowed!';
                     return false;
                 }
             } else {
-                $_SESSION[$error_upload_img] = 'Your file is too large!';
+                $_SESSION['error_register'] = 'Your file is too large!';
                 return false;
             }   
         } else {
-            $_SESSION[$error_upload_img] = 'File is already exist!';
+            $_SESSION['error_register'] = 'File is already exist!';
             return false;
         }
     } else {
-        $_SESSION[$error_upload_img] = 'File is not an image!';
+        $_SESSION['error_register'] = 'File is not an image!';
         return false;
     }
 }
 
 function verify_update_img($img_file, $target_dir) {
-    global $error_update_img;
     $target_file = $target_dir . basename($img_file["name"]);
-    $error_update_img = $ipaddress . '_error_update_img';
     if (check_img_real($img_file)) {
         if (check_file_size($img_file)) {
             if (check_img_type($target_file)) {
                 return true;
             } else {
-                $_SESSION[$error_update_img] = 'Only JPG, JPEG, PNG and GIF files are allowed!';
+                $_SESSION['error_update'] = 'Only JPG, JPEG, PNG and GIF files are allowed!';
                 return false;
             }
         } else {
-            $_SESSION[$error_update_img] = 'Your file is too large!';
+            $_SESSION['error_update'] = 'Your file is too large!';
             return false;
         }   
     } else {
-        $_SESSION[$error_update_img] = 'File is not an image!';
+        $_SESSION['error_update'] = 'File is not an image!';
         return false;
     }
 }
@@ -237,4 +237,36 @@ function verify_update_img($img_file, $target_dir) {
 function retrieve_data($database_path) {
     $decoded_data = json_decode(file_get_contents($database_path), true);
     return $decoded_data;
+}
+
+function get_profile_img($user){
+    $file_location = '../UserData/ProfileImages/'.$user.'/';
+    $files = scandir ($file_location);
+    $image = $file_location . $files[2];
+    return $image;
+}
+
+function upload_img($img_file, $email_string, $fname, $lname, $unix_time, $dir) {
+    $email_string = substr($email_string, 0, strpos($email_string, '@'));
+    $target_dir = $dir . '/' .'Images';
+    $new_file_name = upload_img_name((explode('.',$img_file['name'])[0]) . '@' . $email_string . '@@' . $unix_time);
+    $new_target_file_name = $target_dir . "/" . $new_file_name;
+    $target_file = $target_dir . "/" . basename($img_file["name"]);
+    $file_extension = get_file_extension($target_file);
+    $new_target_file_name .= $file_extension;
+    if (move_uploaded_file($img_file['tmp_name'], $target_file)) {
+        rename($target_file, $new_target_file_name);
+        return true;
+    } else {
+        return false;
+    }
+}
+
+function get_profile_img_path($email_string, $fname, $lname, $dir) {
+    $email_string = substr($email_string, 0, strpos($email_string, '@'));
+    $target_dir = $dir . $email_string;
+    $profile_img_dtb_path = glob($target_dir . '/*');
+    foreach ($profile_img_dtb_path as $profile_img) {
+        return $profile_img;
+    }
 }

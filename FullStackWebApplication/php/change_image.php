@@ -2,14 +2,9 @@
 include_once("functions.php");
 if (isset($_POST['save'])) {
     session_start();
-    $ipaddress = $_SERVER['REMOTE_ADDR'];
-    $unique_mail_id = $ipaddress . '_email';
-    $unique_fname_id = $ipaddress . '_fname';
-    $unique_lname_id = $ipaddress . '_lname';
-    $email = $_SESSION[$unique_mail_id];
-    $fname = $_SESSION[$unique_fname_id];
-    $lname = $_SESSION[$unique_lname_id];
-    $update_profile_img_status = $ipaddress . '_update_img_status';
+    $email = $_SESSION["email"];
+    $fname = $_SESSION["fname"];
+    $lname = $_SESSION["lname"];
     $uploadOK = 1;
     $new_img = $_FILES['change_img'];
     $user_database = "../../UserData/UserAccounts/accounts.db";
@@ -17,7 +12,6 @@ if (isset($_POST['save'])) {
     $img_database = "../../UserData/ProfileImages/";
     $file = substr($email, 0, strpos($email, '@'));
     $file_path = $img_database . $file . '/' . '*';
-    echo $file_path;
     $file_location = glob($file_path);
     for ($i = 0; $i <= count($data); $i++) {
         if (strtolower($email) === strtolower($data[$i]['email'])) {
@@ -33,27 +27,26 @@ if (isset($_POST['save'])) {
                     }
                     if ($uploadOK) {
                         if (update_img_profile($new_img, $email, $fname, $lname, $img_database)) {
-                            $_SESSION[$update_profile_img_status] = 'Profile picture is updated!';
-                            header('Location: /FullStackWebApplication/design/profile_page.php');
+                            $update_profile_img = 'Profile picture is updated!';
+                            $_SESSION['update-profile-img-status'] = $update_profile_img;
+                            header('Location: ../profile_page.php');
                         }
                     } else {
-                        $_SESSION[$update_profile_img_status] = 'Profile picture cannot be updated!';
-                        header('Location: /FullStackWebApplication/design/profile_page.php');
+                        $update_profile_img = 'Profile picture cannot be updated!';
+                        $_SESSION['update-profile-img-status'] = $update_profile_img;
+                        header('Location: ../profile_page.php');
                     }
                     break;
                 } else {
-                    $_SESSION[$update_profile_img_status] = $_SESSION[$error_update_img];
-                    header('Location: /FullStackWebApplication/design/profile_page.php');
+                    $update_profile_img = $error_update_img;
+                    $_SESSION['update-profile-img-status'] = $update_profile_img;
+                    header('Location: ../profile_page.php');
                 }
             } else {
-                if (verify_update_img($new_img, $img_database)) {
-                    if (update_img_profile($new_img, $email, $fname, $lname, $img_database)) {
-                        $_SESSION[$update_profile_img_status] = 'Profile picture is updated!';
-                        header('Location: /FullStackWebApplication/design/profile_page.php');
-                    }
-                } else {
-                    $_SESSION[$update_profile_img_status] = $_SESSION[$error_update_img];
-                    header('Location: /FullStackWebApplication/design/profile_page.php'); 
+                if (update_img_profile($new_img, $email, $fname, $lname, $img_database)) {
+                    $update_profile_img = 'Profile picture is updated!';
+                    $_SESSION['update-profile-img-status'] = $update_profile_img;
+                    header('Location: ../profile_page.php');
                 }
             }
         } else {
