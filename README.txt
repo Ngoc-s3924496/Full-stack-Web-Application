@@ -12,6 +12,7 @@ php folder:
 + reset_password.php
 + search.php
 + upload_image.php
++ set_detailed_page.php
 
 
 design folder:
@@ -29,3 +30,4 @@ CHANGED FILES:
 
 php folder:
 + functions.php
++ list_user.php

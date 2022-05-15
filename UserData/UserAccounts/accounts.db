@@ -3,14 +3,14 @@
         "f_name": "Luan",
         "l_name": "Nguyen",
         "email": "Luan@gmail.com",
-        "password": "$2y$10$GEvBEuc7Xi0J4MKbhfawiOqcU3Dwj2CoAiMSZ9Jp1JZcHxq\/wsl86",
+        "password": "$2y$10$H5ukMci0L9tbLhLdOLtDUe1WFoYMbSCHTLgDpDpewnj6DUKuHuUZW",
         "registered_time": "30\/04\/2022 18:20:29 UTC"
     },
     {
         "f_name": "John",
         "l_name": "Smith",
         "email": "hello1@gmail.com",
-        "password": "$2y$10$6gIDbjgJ577EH6lN\/3iRI.ax\/001k9Q51EcMVpmFUl2sTGMKkDvP.",
+        "password": "$2y$10$Fbb6rinTOUZEwxl6gMPLW.VNoobvsoJkE8aOZPUCcBD9F\/5rRmnWC",
         "registered_time": "30\/04\/2022 18:29:14 UTC"
     },
     {
@@ -87,7 +87,7 @@
         "f_name": "Luan",
         "l_name": "Doan",
         "email": "luandoan@gmail.com",
-        "password": "$2y$10$r8NKYSIgdUF\/vVHLQ22eBeq0PX.VazGBbffN.wbjbWYZPX\/BzbKDq",
+        "password": "$2y$10$7\/XqSMCiv5ld3tWFt8SJhu6UVcxlmBPvLJrOh0N3OzONZSWDcoNT6",
         "registered_time": "08\/05\/2022 13:21:09 UTC"
     }
 ]

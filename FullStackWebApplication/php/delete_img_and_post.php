@@ -3,16 +3,15 @@ include_once('functions.php');
 if (isset($_POST['delete'])) {
     $folder = '../../UserData/UserUpload/';
     $user_account = '../../UserData/UserAccounts/accounts.db';
+    $post_file = $folder . 'posts.db';
+    $post_database = retrieve_data($post_file);
+    $image_folder = $folder . 'Images';
     $data = retrieve_data($user_account);
     $delete_img_array = $_POST['deleteimages'];
     foreach ($delete_img_array as $img) {
         $username = explode('___', (explode('@', $img)[1]))[0];
         $time = explode('@', $img)[0];
         $image_name = explode('___', $img)[1];
-        $user_folder = $folder . $username . '/';
-        $post_file = $user_folder . 'posts.db';
-        $post_database = retrieve_data($post_file);
-        $image_folder = $user_folder . 'Images';
         for ($i = 0; $i < count($post_database); $i++) {
             if ($image_name === $post_database[$i]['image']['name']) {
                 if (array_splice($post_database, $i, 1)) {

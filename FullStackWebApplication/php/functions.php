@@ -245,7 +245,7 @@ function retrieve_data($database_path) {
 
 function upload_img($img_file, $email_string, $fname, $lname, $unix_time, $dir) {
     $email_string = substr($email_string, 0, strpos($email_string, '@'));
-    $target_dir = $dir . $email_string . '/' .'Images';
+    $target_dir = $dir . '/' .'Images';
     $new_file_name = upload_img_name((explode('.',$img_file['name'])[0]) . '@' . $email_string . '@@' . $unix_time);
     $new_target_file_name = $target_dir . "/" . $new_file_name;
     $target_file = $target_dir . "/" . basename($img_file["name"]);
@@ -259,7 +259,7 @@ function upload_img($img_file, $email_string, $fname, $lname, $unix_time, $dir) 
     }
 }
 
-function get_profile_img($email_string, $fname, $lname, $dir) {
+function get_profile_img_path($email_string, $fname, $lname, $dir) {
     $email_string = substr($email_string, 0, strpos($email_string, '@'));
     $target_dir = $dir . $email_string;
     $profile_img_dtb_path = glob($target_dir . '/*');

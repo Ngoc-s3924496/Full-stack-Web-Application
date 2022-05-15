@@ -10,32 +10,22 @@ if (isset($_POST['upload'])) {
     $sharing_level = $_POST['privacy'];
     $upload_image = $_FILES['file_upload'];
     date_default_timezone_set('UTC');
-    $database_location = '../../UserData/UserUpload/';
-    $posts_location = $database_location . $email_name;
-    $posts_database = $posts_location . '/' . 'posts.db';
-    $img_database_location = $posts_location . '/' . 'Images' . '/';
-    $uploadOK = true;
-    
-
+    $database_location = '../../UserData/UserUpload';
+    $posts_database = $database_location . '/' . 'posts.db';
+    $img_database_location = $database_location . '/' . 'Images' . '/';
+    $uploadOK = 1;
     $post_data = [
+        'email' => $email,
         'caption' => $caption,
         'sharing_level' => $sharing_level,
         'created_time' => date('d/m/Y H:i:s e'),
         'created_seconds' => time(),
         'image' => $upload_image
     ];
-
-    if ($uploadOK == true) {
-        if (!file_exists($posts_location)) {
-            if (mkdir($posts_location . '/', 0777, true)) {
-                if (mkdir($img_database_location, 0777, true)) {
-                    echo 'yes';
-    
-                }
-            }
-        }
-
-
+    if (!verify_update_img($upload_image, $img_database_location . '/')) {
+        $uploadOK = 0;
+    }
+    if ($uploadOK == 1) {
         if (filesize($posts_database) == 0) {
             $first_record = [$post_data];
             $data_to_save = $first_record;
@@ -45,10 +35,7 @@ if (isset($_POST['upload'])) {
             $data_to_save = $old_records;
         }
         if (file_put_contents($posts_database, json_encode($data_to_save, JSON_PRETTY_PRINT), LOCK_EX)) {
-            if (verify_update_img($upload_image, $img_database_location)) {
-                $accounts = retrieve_data($posts_database);
-                upload_img($upload_image, $email, $fname, $lname, time(), $database_location);
-            }
+            upload_img($upload_image, $email, $fname, $lname, time(), $database_location);
         } else {
             echo 'failed';
         }

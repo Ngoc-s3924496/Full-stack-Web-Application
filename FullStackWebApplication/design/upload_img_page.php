@@ -9,7 +9,7 @@
 <body>
     <p>Please submit image of these types: PNG, JPG, JPEG</p>
     <form action="../php/upload_image.php" method="POST" enctype="multipart/form-data">
-        <input type="file" name="file_upload">
+        <input type="file" name="file_upload" required>
         <input type="text" name="description">
         <Select name="privacy">
             <option value="public">Public</option>
