@@ -19,17 +19,17 @@ Our team consists of four people; we are all RMIT freshmen, but we feel that our
 4. Doan Khanh Luan     - 25%
 We all discussed and agreed to this contribution.
 
-- Git Hub Repository -
+- Git Hub Repository
 
-+ GitHub Repository URL : https://github.com/Ngoc-s3924496/Full-stack-Web-Application
-+ Add "TriDang" as a collaborator : completed
+  + GitHub Repository URL : https://github.com/Ngoc-s3924496/Full-stack-Web-Application
+  + Add "TriDang" as a collaborator : completed
 
 - Demonstration Video - 
 
-+ Video URL : 
-Youtube: https://www.youtube.com/watch?v=9EJa80gPelw
+  + Video URL : 
+    Youtube: https://www.youtube.com/watch?v=9EJa80gPelw
 
-OneDrive: https://rmiteduau-my.sharepoint.com/personal/s3927021_rmit_edu_vn/_layouts/15/onedrive.aspx?id=%2Fpersonal%2Fs3927021%5Frmit%5Fedu%5Fvn%2FDocuments%2FRecordings%2FCall%20with%2D20220517%5F225219%2DMeeting%20Recording%2Emp4&parent=%2Fpersonal%2Fs3927021%5Frmit%5Fedu%5Fvn%2FDocuments%2FRecordings&ga=1
+    OneDrive: https://rmiteduau-my.sharepoint.com/personal/s3927021_rmit_edu_vn/_layouts/15/onedrive.aspx?id=%2Fpersonal%2Fs3927021%5Frmit%5Fedu%5Fvn%2FDocuments%2FRecordings%2FCall%20with%2D20220517%5F225219%2DMeeting%20Recording%2Emp4&parent=%2Fpersonal%2Fs3927021%5Frmit%5Fedu%5Fvn%2FDocuments%2FRecordings&ga=1
 
 - Explanation of how to run our website
 ~ Users Flow ~
