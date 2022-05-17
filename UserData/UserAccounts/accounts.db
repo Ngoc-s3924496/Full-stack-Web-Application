@@ -1,93 +1,44 @@
 [
     {
-        "f_name": "Luan",
+        "f_name": "Ben",
+        "l_name": "Simmon",
+        "email": "Brick4ever@gmail.com",
+        "password": "$2y$10$wxErLFtbCTvv0qYpwYKckugMTLnwWg.YHbgazT8gOklAOwpEup3Yy",
+        "registered_time": "17\/05\/2022 15:54:45 UTC"
+    },
+    {
+        "f_name": "James",
+        "l_name": "Cortez",
+        "email": "JammieC12@gmail.com",
+        "password": "$2y$10$EJlq9HmnXKMlLBD3gQh2del5Abm\/BANLZ2z0RKwxSvSx2boxW2s7i",
+        "registered_time": "17\/05\/2022 15:56:30 UTC"
+    },
+    {
+        "f_name": "Ngan",
         "l_name": "Nguyen",
-        "email": "Luan@gmail.com",
-        "password": "$2y$10$AowpQ53cluiGRZ7eJNXMDOr634Bq4Jv7pEtUP6kkZyBvpgb\/.pQZ2",
-        "registered_time": "30\/04\/2022 18:20:29 UTC"
+        "email": "Ngan0301@gmail.com",
+        "password": "$2y$10$mRbM6vNbQEvd0\/1j62C2e.ozKtL1mcB6rUcW4CtJ2yru7idFUwRxG",
+        "registered_time": "17\/05\/2022 15:57:06 UTC"
     },
     {
         "f_name": "John",
         "l_name": "Smith",
-        "email": "hello1@gmail.com",
-        "password": "$2y$10$6gIDbjgJ577EH6lN\/3iRI.ax\/001k9Q51EcMVpmFUl2sTGMKkDvP.",
-        "registered_time": "30\/04\/2022 18:29:14 UTC"
+        "email": "JS4488@gmail.com",
+        "password": "$2y$10$SvF4o59tW2Z8zVKx20bSbOoSFRlaSchi4szgi4LlRCNx7V2ofZ7ia",
+        "registered_time": "17\/05\/2022 16:02:04 UTC"
     },
     {
-        "f_name": "Tuan",
-        "l_name": "Tran",
-        "email": "tuantran@yahoo.com",
-        "password": "$2y$10$xReyXWTbI8dgAZZfj98Pu.RelwnwTZGCQYdpcwI7sFDD2DHO6mct2",
-        "registered_time": "30\/04\/2022 18:52:47 UTC"
+        "f_name": "Oliver",
+        "l_name": "Truong",
+        "email": "Oliver1753@gmail.com",
+        "password": "$2y$10$0MvdoAXT9NCBeRnF5ntSGOhKcOVU0h7lmR8uIiYjLO5eYTKy9WVQm",
+        "registered_time": "17\/05\/2022 16:02:43 UTC"
     },
     {
-        "f_name": "Dung",
-        "l_name": "Le",
-        "email": "quangdung@gmail.com",
-        "password": "$2y$10$.FbcQUa7OicLOZwgOnylueOCZnhr2Cc5s9nO4m.Z9kheKE\/EThQtm",
-        "registered_time": "01\/05\/2022 04:49:23 UTC"
-    },
-    {
-        "f_name": "Jamie",
-        "l_name": "Diaz",
-        "email": "jamie@gmail.com",
-        "password": "$2y$10$h8RutolxlyFGnfHapoJbm.z41Nk9RaYrIsuh5IKf7jkfyiywFRlB2",
-        "registered_time": "01\/05\/2022 06:20:24 UTC"
-    },
-    {
-        "f_name": "Jamie",
-        "l_name": "Jay",
-        "email": "jamie.jay@gmail.com",
-        "password": "$2y$10$9MX4fGWJlODcXkq4Ld1I2OAtlRgoQV6yRY4AyZ2aPgAkYt6M8XeyC",
-        "registered_time": "01\/05\/2022 06:25:19 UTC"
-    },
-    {
-        "f_name": "Thong",
-        "l_name": "Hoang",
-        "email": "thong@gmail.com",
-        "password": "$2y$10$\/oC8wwxkQfAhldIr6FD4R.YF745HX.aw7FDFUaokZ6FKfUY\/tt\/A2",
-        "registered_time": "01\/05\/2022 08:07:52 UTC"
-    },
-    {
-        "f_name": "Ngoc",
-        "l_name": "Duong",
-        "email": "ngocduong@gmail.com",
-        "password": "$2y$10$eApFT6ZKzg5dSofvhNBsHuuPOqfpVXlpesbbOfpEGjHBZuG7..lLS",
-        "registered_time": "01\/05\/2022 16:22:22 UTC"
-    },
-    {
-        "f_name": "Tuan",
-        "l_name": "Dao",
-        "email": "tuandao@gmail.com",
-        "password": "$2y$10$N2H7pOZQgRejiv0CHlw93eUBeg8iL7YtXrXRUEMNrXLWv6p\/3mEZK",
-        "registered_time": "06\/05\/2022 16:15:54 UTC"
-    },
-    {
-        "f_name": "Bao",
-        "l_name": "Nguyen",
-        "email": "baonguyen@gmail.com",
-        "password": "$2y$10$MYLo\/.sIWnnWLhyz9WEaMusfr8LHvHDUq2XneH\/BXw0HXWYUIyOGa",
-        "registered_time": "06\/05\/2022 16:20:34 UTC"
-    },
-    {
-        "f_name": "Loi",
-        "l_name": "Nguyen",
-        "email": "loinguyen@gmail.com",
-        "password": "$2y$10$EPRw9QZcvI9NgEux\/PMj9e99DkVWtWHMefti4oeMzLpXzwtoXwEA.",
-        "registered_time": "06\/05\/2022 17:20:18 UTC"
-    },
-    {
-        "f_name": "&lt;Quan&gt;",
-        "l_name": "&lt;Nguyen&gt;",
-        "email": "quannguyen@gmail.com",
-        "password": "$2y$10$ycyb1dnlPf8Y\/Pt83KzdZOg0xxbRYdN\/MkK.ai3EIP.Mtx.yO6HDC",
-        "registered_time": "08\/05\/2022 13:08:55 UTC"
-    },
-    {
-        "f_name": "Luan",
-        "l_name": "Doan",
-        "email": "luandoan@gmail.com",
-        "password": "$2y$10$n\/UYZGTJmbObIjqgiIe9kuwrzr0eX0KannXDsvOIuaguzr98SAGcW",
-        "registered_time": "08\/05\/2022 13:21:09 UTC"
+        "f_name": "ngoc",
+        "l_name": "ngoc",
+        "email": "ngocngoc1763@gmail.com",
+        "password": "$2y$10$u4jwNdOediRb5IZfq7C6ZuRGPB3KZ3NYXZ4EsNJECRKSD9Q9HIyEW",
+        "registered_time": "17\/05\/2022 16:03:19 UTC"
     }
 ]
