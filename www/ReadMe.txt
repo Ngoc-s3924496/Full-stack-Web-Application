@@ -38,7 +38,7 @@ That is the end of the ~ Users Flow ~
 
 ~ Admin Flow ~ TOP SECRET ~
 
-The admin cannot be accessed in the normal way, you have to manually type in the path into the search bar. (example: /www/php/login_admin_page.php ) to move to this page.
+The admin cannot be accessed in the normal way, you have to manually type in the path into the search bar. (example: /www/login_admin_page.php ) to move to this page.
 
 First, as we created a hard-code account for admin, we assume that you have successfully logged-in the "login_admin_page.php" with the account we provided below
 
