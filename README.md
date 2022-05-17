@@ -31,8 +31,9 @@ Youtube: https://www.youtube.com/watch?v=9EJa80gPelw
 
 OneDrive: https://rmiteduau-my.sharepoint.com/personal/s3927021_rmit_edu_vn/_layouts/15/onedrive.aspx?id=%2Fpersonal%2Fs3927021%5Frmit%5Fedu%5Fvn%2FDocuments%2FRecordings%2FCall%20with%2D20220517%5F225219%2DMeeting%20Recording%2Emp4&parent=%2Fpersonal%2Fs3927021%5Frmit%5Fedu%5Fvn%2FDocuments%2FRecordings&ga=1
 
-- Explanation of how to run our website - 
+- Explanation of how to run our website
 ~ Users Flow ~
+
 First, we assume that the viewer is currently located at "index.php". 
 Here, you can view many posts that have a "public" sharing level. 
 In the end, the is a copyright mark with 2 links, which move to the
